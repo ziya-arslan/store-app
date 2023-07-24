@@ -47,6 +47,13 @@ const HomeScreen = () => {
         'https://preview.thenewsmarket.com/Previews/ADID/StillAssets/320x320/558271.jpg',
       colorNames: ['#B59488', '#6C60E5', '#F36D4C', 'yellow', 'black'],
     },
+    {
+      title: 'Puma RS-X3',
+      price: 120,
+      image:
+        'https://img01.ztat.net/article/spp-media-p1/714ccdf466c24e71843fcb70034eea17/8e2e1b63e1fd4cb28103979ee4028f8b.jpg?imwidth=1800&filter=packshot',
+      colorNames: ['#000', '#2BA7F7', '#FF6513', 'yellow', 'black'],
+    },
   ];
 
   const {
@@ -58,7 +65,11 @@ const HomeScreen = () => {
   } = styles;
 
   return (
-    <ScrollView style={{backgroundColor: '#fff'}} bounces={false}>
+    <ScrollView
+      style={{backgroundColor: '#fff'}}
+      bounces={false}
+      scrollEventThrottle={16}
+      showsVerticalScrollIndicator={false}>
       <SafeAreaView style={container}>
         <View style={searchContainer}>
           <TouchableOpacity style={searchButton}>
@@ -73,8 +84,10 @@ const HomeScreen = () => {
         </View>
         <Carousel data={data} />
 
+        {/* Categories list */}
+
         {/* Collection View */}
-        <View style={{paddingHorizontal: 24}}>
+        <View style={{gap: 12}}>
           <View style={collectionContainer}>
             <Text style={{fontSize: 20, fontWeight: '700'}}>
               New Collection
@@ -83,11 +96,17 @@ const HomeScreen = () => {
               <Text style={{color: colors.text, opacity: 0.5}}>See All</Text>
             </TouchableOpacity>
           </View>
-          <View style={{flexDirection: 'row', gap: 12, marginTop: 12}}>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            scrollEventThrottle={16}
+            snapToInterval={200}
+            decelerationRate="fast"
+            contentContainerStyle={{gap: 12, paddingHorizontal: 20}}>
             {cardData.map((item, index) => {
               return <Card key={index} {...item} />;
             })}
-          </View>
+          </ScrollView>
         </View>
       </SafeAreaView>
     </ScrollView>
@@ -118,5 +137,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    paddingHorizontal: 24,
   },
 });

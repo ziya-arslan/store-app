@@ -51,7 +51,7 @@ const Carousel = ({data}: CarouselProps) => {
           };
         });
         if (!item.image) {
-          return <View style={{width: SPACER}} key={index} />;
+          return <View key={index} style={{width: SPACER}} />;
         }
         return (
           <View key={index} style={{width: SIZE}}>

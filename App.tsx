@@ -18,10 +18,11 @@ const App = () => {
         ? {
             ...DarkTheme,
             colors: {
-              ...DarkTheme.colors,
-              primary: '#FE6607',
+              ...DefaultTheme.colors,
+              background: '#f5f5f5',
+              text: '#191919',
               border: '#D9D9D9',
-              text: '#fff',
+              primary: '#FE6607',
             },
           }
         : {

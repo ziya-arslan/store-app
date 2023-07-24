@@ -20,7 +20,7 @@ const Card = ({title, price, image, colorNames}: CardProps) => {
       <TouchableOpacity style={styles.likeButton}>
         <FeatherIcon name="heart" size={24} color="#fff" />
       </TouchableOpacity>
-      <View style={{flex: 1}}>
+      <View style={{flex: 1, aspectRatio: 1, width: '100%'}}>
         <Image
           source={{
             uri: image,
@@ -30,7 +30,9 @@ const Card = ({title, price, image, colorNames}: CardProps) => {
         />
       </View>
       <View style={{padding: 12}}>
-        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.title} numberOfLines={1}>
+          {title}
+        </Text>
         <View style={styles.details}>
           <Text>${price}</Text>
           {/* circles defining colors */}
@@ -66,6 +68,7 @@ const Card = ({title, price, image, colorNames}: CardProps) => {
               if (index === 4) {
                 return (
                   <View
+                    key={index}
                     style={{
                       padding: 2,
                       borderRadius: 100,
@@ -94,7 +97,7 @@ const makeStyles = (colors: any) =>
   StyleSheet.create({
     container: {
       flex: 1,
-      height: 200,
+      width: 200,
       borderWidth: 1,
       borderColor: colors.border,
       borderRadius: 24,
