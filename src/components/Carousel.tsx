@@ -33,7 +33,7 @@ const Carousel = ({data}: CarouselProps) => {
     <Animated.ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
-      bounces={false}
+      bounces={true}
       scrollEventThrottle={16}
       snapToInterval={SIZE}
       decelerationRate="fast"

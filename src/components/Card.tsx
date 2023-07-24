@@ -3,9 +3,18 @@ import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
-const Card = () => {
+type CardProps = {
+  title: string;
+  price: number;
+  image: string;
+  colorNames?: Array<string>;
+};
+
+const Card = ({title, price, image, colorNames}: CardProps) => {
   const {colors} = useTheme();
   const styles = makeStyles(colors);
+  const [selectedColor] = React.useState<number>(0);
+
   return (
     <TouchableOpacity style={styles.container}>
       <TouchableOpacity style={styles.likeButton}>
@@ -14,16 +23,16 @@ const Card = () => {
       <View style={{flex: 1}}>
         <Image
           source={{
-            uri: 'https://www.barkershoes.com/cdn/shop/files/SS20_HOMEPAGE_MCCLEANPAIR_880x550_crop_center.jpg?v=1614334815',
+            uri: image,
           }}
           resizeMode="cover"
           style={styles.image}
         />
       </View>
       <View style={{padding: 12}}>
-        <Text style={styles.title}>TEST NAME</Text>
+        <Text style={styles.title}>{title}</Text>
         <View style={styles.details}>
-          <Text>$120</Text>
+          <Text>${price}</Text>
           {/* circles defining colors */}
           <View
             style={{
@@ -31,65 +40,47 @@ const Card = () => {
               gap: 2,
               alignItems: 'center',
             }}>
-            <View
-              style={{
-                padding: 2,
-                borderRadius: 100,
-                borderWidth: 1,
-                borderColor: '#000',
-              }}>
-              <View
-                style={{
-                  width: 16,
-                  height: 16,
-                  borderRadius: 8,
-                  backgroundColor: '#000',
-                }}
-              />
-            </View>
-            <View
-              style={{
-                padding: 2,
-                borderRadius: 100,
-                borderWidth: 0,
-                borderColor: '#000',
-              }}>
-              <View
-                style={{
-                  width: 16,
-                  height: 16,
-                  borderRadius: 8,
-                  backgroundColor: '#32A1F2',
-                }}
-              />
-            </View>
-            <View
-              style={{
-                padding: 2,
-                borderRadius: 100,
-                borderWidth: 0,
-                borderColor: '#000',
-              }}>
-              <View
-                style={{
-                  width: 16,
-                  height: 16,
-                  borderRadius: 8,
-                  backgroundColor: '#FC641B',
-                }}
-              />
-            </View>
-            <View
-              style={{
-                padding: 2,
-                borderRadius: 100,
-                borderWidth: 1,
-                borderColor: '#929292',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-              <Text style={{fontSize: 10, color: '#929292'}}>+2</Text>
-            </View>
+            {colorNames?.map((color, index) => {
+              if (colorNames.length > 3 && index < 3) {
+                return (
+                  <View
+                    key={index}
+                    style={{
+                      padding: 2,
+                      borderRadius: 100,
+                      borderWidth: selectedColor === index ? 1 : 0,
+                      borderColor: color,
+                    }}>
+                    <View
+                      style={{
+                        width: 16,
+                        height: 16,
+                        borderRadius: 8,
+                        backgroundColor: color,
+                      }}
+                    />
+                  </View>
+                );
+              }
+              const remaining = colorNames.length - 4;
+              if (index === 4) {
+                return (
+                  <View
+                    style={{
+                      padding: 2,
+                      borderRadius: 100,
+                      borderWidth: 1,
+                      borderColor: '#929292',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}>
+                    <Text style={{fontSize: 10, color: '#929292'}}>
+                      +{remaining}
+                    </Text>
+                  </View>
+                );
+              }
+            })}
           </View>
         </View>
       </View>

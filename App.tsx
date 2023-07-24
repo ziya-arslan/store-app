@@ -1,10 +1,5 @@
 import React, {useMemo} from 'react';
-import {
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  useColorScheme,
-} from 'react-native';
+import {StatusBar, useColorScheme} from 'react-native';
 // navigation
 import {
   DarkTheme,
@@ -24,7 +19,7 @@ const App = () => {
             ...DarkTheme,
             colors: {
               ...DarkTheme.colors,
-              primary: '#fff',
+              primary: '#FE6607',
               border: '#D9D9D9',
               text: '#fff',
             },
@@ -43,19 +38,13 @@ const App = () => {
   );
 
   return (
-    <SafeAreaView style={styles.container}>
-      <NavigationContainer theme={theme}>
-        <RootNavigator />
-        <StatusBar barStyle={'light-content'} />
-      </NavigationContainer>
-    </SafeAreaView>
+    <NavigationContainer theme={theme}>
+      <RootNavigator />
+      <StatusBar
+        barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
+      />
+    </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;

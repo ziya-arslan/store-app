@@ -32,11 +32,33 @@ const HomeScreen = () => {
       },
     },
   ];
+  const cardData = [
+    {
+      title: 'Nike Air Max 270 React',
+      price: 150,
+      image:
+        'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/ptxy4m33guxhewvlbnyy/air-max-270-react-mens-shoe-zPRv3k.png',
+      colorNames: ['#000', '#2BA7F7', '#FF6513', 'yellow', 'black'],
+    },
+    {
+      title: 'Adidas Yeezy Boost 350 V2',
+      price: 220,
+      image:
+        'https://preview.thenewsmarket.com/Previews/ADID/StillAssets/320x320/558271.jpg',
+      colorNames: ['#B59488', '#6C60E5', '#F36D4C', 'yellow', 'black'],
+    },
+  ];
 
-  const {container, searchContainer, searchButton, searchButtonText} = styles;
+  const {
+    container,
+    searchContainer,
+    searchButton,
+    searchButtonText,
+    collectionContainer,
+  } = styles;
 
   return (
-    <ScrollView style={{backgroundColor: '#fff'}}>
+    <ScrollView style={{backgroundColor: '#fff'}} bounces={false}>
       <SafeAreaView style={container}>
         <View style={searchContainer}>
           <TouchableOpacity style={searchButton}>
@@ -53,12 +75,7 @@ const HomeScreen = () => {
 
         {/* Collection View */}
         <View style={{paddingHorizontal: 24}}>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}>
+          <View style={collectionContainer}>
             <Text style={{fontSize: 20, fontWeight: '700'}}>
               New Collection
             </Text>
@@ -67,8 +84,9 @@ const HomeScreen = () => {
             </TouchableOpacity>
           </View>
           <View style={{flexDirection: 'row', gap: 12, marginTop: 12}}>
-            <Card />
-            <Card />
+            {cardData.map((item, index) => {
+              return <Card key={index} {...item} />;
+            })}
           </View>
         </View>
       </SafeAreaView>
@@ -96,4 +114,9 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   searchButtonText: {flex: 1, fontSize: 16, color: '#63676A', opacity: 0.5},
+  collectionContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
 });
