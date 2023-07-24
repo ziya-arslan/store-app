@@ -20,7 +20,7 @@ const Carousel = ({data}: CarouselProps) => {
   ]);
 
   const {width} = useWindowDimensions();
-  const SIZE = width * 0.8;
+  const SIZE = width * 0.88;
   const SPACER = (width - SIZE) / 2;
   const x = useSharedValue(0);
   const onScroll = useAnimatedScrollHandler({
@@ -44,7 +44,7 @@ const Carousel = ({data}: CarouselProps) => {
           const scale = interpolate(
             x.value,
             [(index - 2) * SIZE, (index - 1) * SIZE, index * SIZE],
-            [0.88, 1, 0.88],
+            [0.91, 1, 0.91],
           );
           return {
             transform: [{scale}],
@@ -69,7 +69,7 @@ export default Carousel;
 
 const styles = StyleSheet.create({
   imageContainer: {
-    borderRadius: 34,
+    borderRadius: 12,
     overflow: 'hidden',
   },
   image: {
