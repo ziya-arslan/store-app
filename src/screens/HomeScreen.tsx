@@ -1,6 +1,7 @@
 import {useTheme} from '@react-navigation/native';
 import React from 'react';
 import {
+  RefreshControl,
   SafeAreaView,
   ScrollView,
   StyleSheet,
@@ -14,6 +15,7 @@ import Carousel from '../components/Carousel';
 import {CarouselItem} from '../interfaces/ICarousel';
 
 const HomeScreen = () => {
+  const [refreshing, setRefreshing] = React.useState<boolean>(false);
   const {colors} = useTheme();
   const data: Array<CarouselItem> = [
     {
@@ -56,6 +58,13 @@ const HomeScreen = () => {
     },
   ];
 
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000);
+  }, []);
+
   const {
     container,
     searchContainer,
@@ -67,9 +76,11 @@ const HomeScreen = () => {
   return (
     <ScrollView
       style={{backgroundColor: '#fff'}}
-      bounces={false}
       scrollEventThrottle={16}
-      showsVerticalScrollIndicator={false}>
+      showsVerticalScrollIndicator={false}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }>
       <SafeAreaView style={container}>
         <View style={searchContainer}>
           <TouchableOpacity style={searchButton}>

@@ -1,4 +1,4 @@
-import {useTheme} from '@react-navigation/native';
+import {useNavigation, useTheme} from '@react-navigation/native';
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
@@ -14,9 +14,12 @@ const Card = ({title, price, image, colorNames}: CardProps) => {
   const {colors} = useTheme();
   const styles = makeStyles(colors);
   const [selectedColor] = React.useState<number>(0);
+  const navigation = useNavigation();
 
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => navigation.navigate('ProductDetails')}>
       <TouchableOpacity style={styles.likeButton}>
         <FeatherIcon name="heart" size={24} color="#fff" />
       </TouchableOpacity>

@@ -1,18 +1,17 @@
 import React, {useMemo} from 'react';
 import {StatusBar, useColorScheme} from 'react-native';
-// navigation
 import {
   DarkTheme,
   DefaultTheme,
   NavigationContainer,
-  Theme,
 } from '@react-navigation/native';
 import RootNavigator from './src/navigators/RootNavigator';
+import {ThemeProps} from './src/interfaces/Theme';
 
 const App = () => {
   const colorScheme = useColorScheme();
 
-  const theme: Theme = useMemo(
+  const theme: ThemeProps = useMemo(
     () =>
       colorScheme === 'dark'
         ? {
@@ -23,6 +22,7 @@ const App = () => {
               text: '#191919',
               border: '#D9D9D9',
               primary: '#FE6607',
+              buttonBackground: '#EDEDED',
             },
           }
         : {
@@ -33,6 +33,7 @@ const App = () => {
               text: '#191919',
               border: '#D9D9D9',
               primary: '#FE6607',
+              buttonBackground: '#EDEDED',
             },
           },
     [colorScheme],
