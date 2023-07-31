@@ -1,4 +1,4 @@
-package com.storeapp;
+package com.barybar;
 
 import android.app.Application;
 import com.facebook.react.PackageList;
