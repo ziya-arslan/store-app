@@ -96,79 +96,83 @@ const HomeScreen = () => {
   } = styles;
 
   return (
-    <ScrollView
-      style={container}
-      scrollEventThrottle={16}
-      showsVerticalScrollIndicator={false}
-      contentContainerStyle={{gap: 20}}
-      refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-      }>
-      {/* Top bar */}
-      <View style={searchContainer}>
-        <TouchableOpacity style={searchButton}>
-          <FeatherIcon name="search" size={20} color={colors.primary} />
-          <Text style={{...searchButtonText, opacity: 0.5}}>Search</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <FeatherIcon name="bell" size={20} color={colors.primary} />
-        </TouchableOpacity>
-      </View>
-
+    <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
+        style={container}
         scrollEventThrottle={16}
-        contentContainerStyle={{gap: 12, paddingHorizontal: 24}}>
-        {categoryData.map((item, index) => {
-          return (
-            <View
-              key={index}
-              style={{
-                borderRadius: 16,
-                justifyContent: 'center',
-                alignItems: 'center',
-                gap: 4,
-              }}>
-              <Image
-                style={{flex: 1, borderRadius: 16}}
-                width={64}
-                height={64}
-                source={item.image}
-              />
-              <Text style={{textAlign: 'center', fontWeight: '500'}}>
-                {item.title}
-              </Text>
-            </View>
-          );
-        })}
-      </ScrollView>
-
-      <Carousel data={data} />
-
-      {/* Categories list */}
-
-      {/* Collection View */}
-      <View style={{gap: 12}}>
-        <View style={collectionContainer}>
-          <Text style={{fontSize: 20, fontWeight: '700'}}>New Collection</Text>
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{gap: 20}}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }>
+        {/* Top bar */}
+        <View style={searchContainer}>
+          <TouchableOpacity style={searchButton}>
+            <FeatherIcon name="search" size={20} color={colors.primary} />
+            <Text style={{...searchButtonText, opacity: 0.5}}>Search</Text>
+          </TouchableOpacity>
           <TouchableOpacity>
-            <Text style={{color: colors.text, opacity: 0.5}}>See All</Text>
+            <FeatherIcon name="bell" size={20} color={colors.primary} />
           </TouchableOpacity>
         </View>
+
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
           scrollEventThrottle={16}
-          snapToInterval={200}
-          decelerationRate="fast"
-          contentContainerStyle={{gap: 12, paddingHorizontal: 20}}>
-          {cardData.map((item, index) => {
-            return <Card key={index} {...item} />;
+          contentContainerStyle={{gap: 12, paddingHorizontal: 24}}>
+          {categoryData.map((item, index) => {
+            return (
+              <View
+                key={index}
+                style={{
+                  borderRadius: 16,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  gap: 4,
+                }}>
+                <Image
+                  style={{flex: 1, borderRadius: 16}}
+                  width={64}
+                  height={64}
+                  source={item.image}
+                />
+                <Text style={{textAlign: 'center', fontWeight: '500'}}>
+                  {item.title}
+                </Text>
+              </View>
+            );
           })}
         </ScrollView>
-      </View>
-    </ScrollView>
+
+        <Carousel data={data} />
+
+        {/* Categories list */}
+
+        {/* Collection View */}
+        <View style={{gap: 12}}>
+          <View style={collectionContainer}>
+            <Text style={{fontSize: 20, fontWeight: '700'}}>
+              New Collection
+            </Text>
+            <TouchableOpacity>
+              <Text style={{color: colors.text, opacity: 0.5}}>See All</Text>
+            </TouchableOpacity>
+          </View>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            scrollEventThrottle={16}
+            snapToInterval={200}
+            decelerationRate="fast"
+            contentContainerStyle={{gap: 12, paddingHorizontal: 20}}>
+            {cardData.map((item, index) => {
+              return <Card key={index} {...item} />;
+            })}
+          </ScrollView>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
