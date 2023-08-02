@@ -8,7 +8,6 @@ import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 import FeatherIcon from 'react-native-vector-icons/Feather';
-import {SafeAreaView} from 'react-native';
 
 export type TabsStackParamList = {
   Home: undefined;
@@ -38,38 +37,36 @@ const TabNavigator = () => {
   }, []);
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
-      <TabsStack.Navigator screenOptions={screenOptions}>
-        <TabsStack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{
-            tabBarIcon: homeIcon,
-          }}
-        />
-        <TabsStack.Screen
-          name="Categories"
-          component={CategoriesScreen}
-          options={{
-            tabBarIcon: categoriesIcon,
-          }}
-        />
-        <TabsStack.Screen
-          name="Cart"
-          component={CartScreen}
-          options={{
-            tabBarIcon: cartIcon,
-          }}
-        />
-        <TabsStack.Screen
-          name="Account"
-          component={AccountScreen}
-          options={{
-            tabBarIcon: accountIcon,
-          }}
-        />
-      </TabsStack.Navigator>
-    </SafeAreaView>
+    <TabsStack.Navigator screenOptions={screenOptions}>
+      <TabsStack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: homeIcon,
+        }}
+      />
+      <TabsStack.Screen
+        name="Categories"
+        component={CategoriesScreen}
+        options={{
+          tabBarIcon: categoriesIcon,
+        }}
+      />
+      <TabsStack.Screen
+        name="Cart"
+        component={CartScreen}
+        options={{
+          tabBarIcon: cartIcon,
+        }}
+      />
+      <TabsStack.Screen
+        name="Account"
+        component={AccountScreen}
+        options={{
+          tabBarIcon: accountIcon,
+        }}
+      />
+    </TabsStack.Navigator>
   );
 };
 
