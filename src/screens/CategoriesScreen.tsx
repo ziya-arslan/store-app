@@ -1,11 +1,11 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text} from 'react-native';
 import React from 'react';
 
 const CategoriesScreen = () => {
   return (
-    <View>
+    <ScrollView style={{flex: 1, backgroundColor: '#fff'}}>
       <Text>CategoriesScreen</Text>
-    </View>
+    </ScrollView>
   );
 };
 

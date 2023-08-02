@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import {StatusBar, useColorScheme} from 'react-native';
+import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
 import {
   DarkTheme,
   DefaultTheme,
@@ -40,12 +40,14 @@ const App = () => {
   );
 
   return (
-    <NavigationContainer theme={theme}>
-      <RootNavigator />
-      <StatusBar
-        barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
-      />
-    </NavigationContainer>
+    <SafeAreaView style={{flex: 1}}>
+      <NavigationContainer theme={theme}>
+        <RootNavigator />
+        <StatusBar
+          barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
+        />
+      </NavigationContainer>
+    </SafeAreaView>
   );
 };
 

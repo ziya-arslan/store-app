@@ -20,7 +20,6 @@ const TabsStack = createBottomTabNavigator<TabsStackParamList>();
 
 const TabNavigator = () => {
   const screenOptions: BottomTabNavigationOptions = {
-    tabBarShowLabel: false,
     headerShown: false,
   };
 
