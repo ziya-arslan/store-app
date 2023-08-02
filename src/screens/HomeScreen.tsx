@@ -2,8 +2,8 @@ import {useTheme} from '@react-navigation/native';
 import React from 'react';
 import {
   Image,
-  ImageProps,
   RefreshControl,
+  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,

@@ -40,14 +40,12 @@ const App = () => {
   );
 
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <NavigationContainer theme={theme}>
-        <RootNavigator />
-        <StatusBar
-          barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
-        />
-      </NavigationContainer>
-    </SafeAreaView>
+    <NavigationContainer theme={theme}>
+      <RootNavigator />
+      <StatusBar
+        barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
+      />
+    </NavigationContainer>
   );
 };
 
