@@ -12,7 +12,6 @@ import {
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import Card from '../components/Card';
 import Carousel from '../components/Carousel';
-import CategoriesSlider from '../components/CategoriesSlider';
 import {CarouselItem} from '../interfaces/ICarousel';
 
 const HomeScreen = () => {
@@ -96,7 +95,7 @@ const HomeScreen = () => {
           </TouchableOpacity>
         </View>
 
-        <CategoriesSlider />
+        {/* <CategoriesSlider /> */}
 
         <Carousel data={data} />
 
