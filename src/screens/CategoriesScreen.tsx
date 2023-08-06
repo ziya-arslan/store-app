@@ -1,13 +1,15 @@
-import {ScrollView, StyleSheet, Text} from 'react-native';
+import {SafeAreaView, ScrollView, StyleSheet, Text} from 'react-native';
 import React from 'react';
 
 const CategoriesScreen = () => {
   const {container} = styles;
 
   return (
-    <ScrollView style={container}>
-      <Text>CategoriesScreen</Text>
-    </ScrollView>
+    <SafeAreaView style={container}>
+      <ScrollView>
+        <Text>CategoriesScreen</Text>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

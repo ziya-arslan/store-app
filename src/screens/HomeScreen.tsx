@@ -1,7 +1,6 @@
 import {useTheme} from '@react-navigation/native';
 import React from 'react';
 import {
-  Image,
   RefreshControl,
   SafeAreaView,
   ScrollView,
@@ -13,6 +12,7 @@ import {
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import Card from '../components/Card';
 import Carousel from '../components/Carousel';
+import CategoriesSlider from '../components/CategoriesSlider';
 import {CarouselItem} from '../interfaces/ICarousel';
 
 const HomeScreen = () => {
@@ -59,26 +59,6 @@ const HomeScreen = () => {
       colorNames: ['#000', '#2BA7F7', '#FF6513', 'yellow', 'black'],
     },
   ];
-  const categoryData = [
-    {
-      title: 'Clothing',
-      image: {
-        url: 'https://images.unsplash.com/photo-1467043237213-65f2da53396f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80',
-      },
-    },
-    {
-      title: 'Electronics',
-      image: {
-        url: 'https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80',
-      },
-    },
-    {
-      title: 'Jewelery',
-      image: {
-        url: 'https://images.unsplash.com/photo-1611652022419-a9419f74343d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1288&q=80',
-      },
-    },
-  ];
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
@@ -116,38 +96,9 @@ const HomeScreen = () => {
           </TouchableOpacity>
         </View>
 
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          scrollEventThrottle={16}
-          contentContainerStyle={{gap: 12, paddingHorizontal: 24}}>
-          {categoryData.map((item, index) => {
-            return (
-              <View
-                key={index}
-                style={{
-                  borderRadius: 16,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  gap: 4,
-                }}>
-                <Image
-                  style={{flex: 1, borderRadius: 16}}
-                  width={64}
-                  height={64}
-                  source={item.image}
-                />
-                <Text style={{textAlign: 'center', fontWeight: '500'}}>
-                  {item.title}
-                </Text>
-              </View>
-            );
-          })}
-        </ScrollView>
+        <CategoriesSlider />
 
         <Carousel data={data} />
-
-        {/* Categories list */}
 
         {/* Collection View */}
         <View style={{gap: 12}}>
