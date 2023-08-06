@@ -1,11 +1,4 @@
-import {
-  FlatList,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {FlatList, SafeAreaView, StyleSheet, Text} from 'react-native';
 import React from 'react';
 import CategoriesSlider from '../components/CategoriesSlider';
 import CategoryItem from '../components/CategoryItem';
