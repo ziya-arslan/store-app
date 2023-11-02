@@ -11,7 +11,7 @@ const testSubCategoriesData = [
     },
   },
   {
-    label: 'T-Shirt',
+    label: 'T-Shirt-',
     imageSrc: {
       uri: 'https://as1.ftcdn.net/v2/jpg/02/71/49/08/1000_F_271490868_9EzWzSbhdgcrRM12o5iMUBbWHX5Zptgp.jpg',
     },
